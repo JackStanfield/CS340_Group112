@@ -1,4 +1,7 @@
- -- Converted ER diagram to SQL and addition of sample data
+--Group 112
+--Members: John Stanfield, Austin Albrecht
+ 
+
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -10,42 +13,44 @@ DROP TABLE IF EXISTS Categories;
 DROP TABLE IF EXISTS Chronicles;
 DROP TABLE IF EXISTS Wizards;
 
-
+--Create Tables in order of dependencies
 CREATE TABLE Wizards (
-    wizardID INT AUTO_INCREMENT PRIMARY KEY,
+    wizardID INT(11) AUTO_INCREMENT UNIQUE PRIMARY KEY,
     wizardName VARCHAR(255) NOT NULL,
-    beardLength INT NULL,
-    wizardAge INT NULL,
-    masterID INT NULL,
+    beardLengthCm INT(11) NULL,
+    wizardAge INT(11) NULL,
+    masterID INT(11) NULL,
     FOREIGN KEY (masterID) REFERENCES Wizards(wizardID)
 );
 
 CREATE TABLE Chronicles (
-    chronicleID INT AUTO_INCREMENT PRIMARY KEY,
+    chronicleID INT(11) AUTO_INCREMENT UNIQUE PRIMARY KEY,
     chronicleTitle VARCHAR(255) UNIQUE NOT NULL,
     description TEXT NULL,
     publicationDate DATE NULL,
-    wizardID INT NULL,
+    wizardID INT(11) NULL,
     FOREIGN KEY (wizardID) REFERENCES Wizards(wizardID)
 );
 
 CREATE TABLE Categories (
-    categoryID INT AUTO_INCREMENT PRIMARY KEY,
+    categoryID INT(11) AUTO_INCREMENT UNIQUE PRIMARY KEY,
     categoryName VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE Spells (
-    spellID INT AUTO_INCREMENT PRIMARY KEY,
+    spellID INT(11) AUTO_INCREMENT UNIQUE PRIMARY KEY,
     spellName VARCHAR(255) UNIQUE NOT NULL,
     castingInstruction TEXT NULL,
-    chronicleID INT NOT NULL,
+    chronicleID INT(11) NOT NULL,
     FOREIGN KEY (chronicleID) REFERENCES Chronicles(chronicleID)
 );
+--The order of spell and categories table creation doesn't matter
+--SpellCategories must come after both though
 
 CREATE TABLE SpellCategories (
-    spellCategoryID INT AUTO_INCREMENT PRIMARY KEY,
-    spellID INT NOT NULL,
-    categoryID INT NOT NULL,
+    spellCategoryID INT AUTO_INCREMENT UNIQUE PRIMARY KEY,
+    spellID INT(11) NOT NULL,
+    categoryID INT(11) NOT NULL,
     UNIQUE(spellID, categoryID),
     FOREIGN KEY (spellID) REFERENCES Spells(spellID)
     on DELETE CASCADE ON UPDATE CASCADE,
@@ -53,7 +58,7 @@ CREATE TABLE SpellCategories (
     on DELETE CASCADE ON UPDATE CASCADE
     );
 
-
+--Wizard entries, some with no master (NULL)
 INSERT INTO Wizards (wizardName, beardLength, wizardAge, masterID) VALUES
 ('Reginald Stringly', 12, 186, NULL),
 ('Hurckle', 15, 85, NULL),
@@ -63,12 +68,14 @@ INSERT INTO Wizards (wizardName, beardLength, wizardAge, masterID) VALUES
 ('Nate Friendly', 0, 18, 1),
 ('Sam Washings', 0, 19, 1);
 
+--The chroncile Ancient Text I has no known author (NULL wizardID)
 INSERT INTO Chronicles (chronicleTitle, description, publicationDate, wizardID) VALUES
 ('Ancient Text I', 'The oldest written collection of spells theorized to date back to the year 250. Text is crudely constructed, author is unknown.', NULL, NULL),
 ('Dark Arts Unveiled', 'An in-depth look into dark magic.', '1232-12-25', 4),
 ('Learning Wizardry: A Modern Approach', 'A fresh perspective on developing core competencies of wizarding from an up-and-coming young wizard.', '1635-01-20', 2);
 
-    
+--Categories of spells, assigned ID's 1-10 automatically through AUTO_INCREMENT
+--This order is used for reference when linking spells to categories below
 INSERT INTO Categories (categoryName) VALUES
 ('Transfiguration'),
 ('Dark Arts'),
@@ -81,6 +88,8 @@ INSERT INTO Categories (categoryName) VALUES
 ('Offensive Magic'),
 ('Somatic Cast');
 
+--Spells entries linked to chronicles through chronicle ID, which is auto-incremented
+--and order is used to link to categories below
 INSERT INTO Spells (spellName, castingInstruction, chronicleID) VALUES
 ('Fireball', 'Raise your hand toward the target, fingers spread. Maintain focus and speak "fireball".', 1),
 ('Invisibility Cloak', 'Close your eyes and slowly trace an outline of your body.', 1),
@@ -88,6 +97,8 @@ INSERT INTO Spells (spellName, castingInstruction, chronicleID) VALUES
 ('Levitation', 'Perform a controlled upward sweeping motion with your hand while maintaining visual focus on the target.', 3),
 ('Dark Bind', 'Speak a harsh binding incantation and close your fist toward the target.', 2);
 
+--Link Spells to Categories, a spell can have multiple categories 
+--and a category can have multiple spells
 INSERT INTO SpellCategories (spellID, categoryID) VALUES
 (1,4),
 (1,9),
