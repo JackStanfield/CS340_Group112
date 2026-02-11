@@ -1,0 +1,12 @@
+.container {
+    display: flex; /* Aligns items sidebyside */
+    justify-content: center;
+}
+.text-item {
+    padding: 0 10px; /* Adds space around the text */
+    border-right: 1px solid black; /* Creates the vertical line */
+}
+
+.text-item:last-child {
+    border-right: none; /* Removes the border from the last item */
+}
