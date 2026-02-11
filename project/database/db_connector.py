@@ -1,3 +1,8 @@
+##Citation for following code:
+## The following code was borrowed from the CS340
+##exploration - Web Application technology
+
+
 import MySQLdb
 
 #Database credentials

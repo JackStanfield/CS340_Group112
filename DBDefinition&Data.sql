@@ -43,6 +43,7 @@ CREATE TABLE Spells (
     castingInstruction TEXT NULL,
     chronicleID INT(11) NOT NULL,
     FOREIGN KEY (chronicleID) REFERENCES Chronicles(chronicleID)
+    ON DELETE CASCADE ON UPDATE CASCADE
 );
 --The order of spell and categories table creation doesn't matter
 --SpellCategories must come after both though
