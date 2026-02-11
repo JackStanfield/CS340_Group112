@@ -59,7 +59,7 @@ CREATE TABLE SpellCategories (
     );
 
 --Wizard entries, some with no master (NULL)
-INSERT INTO Wizards (wizardName, beardLength, wizardAge, masterID) VALUES
+INSERT INTO Wizards (wizardName, beardLengthCm , wizardAge, masterID) VALUES
 ('Reginald Stringly', 12, 186, NULL),
 ('Hurckle', 15, 85, NULL),
 ('Merlin', 10, 630, NULL),
