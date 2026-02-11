@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CS340 - Wizard DB</title>
+  <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/wizards">Wizards</a>
+    <a href="/chronicles">Chronicles</a>
+    <a href="/spells">Spells</a>
+    <a href="/categories">Categories</a>
+    <a href="/spell-categories">Spell Categories</a>
+  </nav>
+
+  {% block content %}{% endblock %}
+</body>
+</html>
