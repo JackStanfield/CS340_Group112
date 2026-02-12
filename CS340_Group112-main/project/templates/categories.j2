@@ -1,0 +1,40 @@
+{% extends "main.j2" %}
+
+{% block content %}
+<h2>Magic Categories</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Category ID</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Offensive</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Healing</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Add Category</h3>
+<form id="addCategory" action="/categories" method="POST">
+    <label for="categoryName">Category Name:</label>
+    <input type="text" id="categoryName" name="categoryName" required>
+    <input type="submit" value="Add Category">
+</form>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "main.j2" %}
+
+{% block content %}
+<h2>Spell Categories (Intersection Table)</h2>
+<p>Manage which spells belong to which categories.</p>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Spell Name</th>
+            <th>Category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Fireball</td>
+            <td>Offensive</td>
+            <td><button>Delete Association</button></td>
+        </tr>
+        <tr>
+            <td>Fireball</td>
+            <td>Elemental</td>
+            <td><button>Delete Association</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Link Spell to Category</h3>
+<form id="addSpellCat" action="/spell-categories" method="POST">
+    <label for="spell_select">Spell:</label>
+    <select name="spell_id" id="spell_select">
+        <option value="1">Fireball</option>
+        <option value="2">Alohomora</option>
+    </select>
+
+    <label for="category_select">Category:</label>
+    <select name="category_id" id="category_select">
+        <option value="1">Offensive</option>
+        <option value="2">Elemental</option>
+    </select>
+
+    <input type="submit" value="Link Spell to Category">
+</form>
+{% endblock %}
