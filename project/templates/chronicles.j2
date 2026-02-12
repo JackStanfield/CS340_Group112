@@ -1,0 +1,106 @@
+{% extends "main.j2" %}
+{% block content %}
+
+<h1>Chronicles</h1>
+
+<h2>Browse Chronicles </h2>
+<table>
+  <thead>
+    <tr>
+      <th>chronicleID</th>
+      <th>chronicleTitle</th>
+      <th>publicationDate</th>
+      <th>description</th>
+      <th>wizardName</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Ancient Text I</td>
+      <td></td>
+      <td>The oldest written collection of spells.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Dark Arts Unveiled</td>
+      <td>1232-12-25</td>
+      <td>An in-depth look into dark magic.</td>
+      <td>The Dark Lord</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Learning Wizardry: A Modern Approach</td>
+      <td>1635-01-20</td>
+      <td>A fresh perspective on wizardry.</td>
+      <td>Hurckle</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Add Chronicle </h2>
+<form class="cuForm" action="#" method="post">
+  <label>Title:</label>
+  <input type="text" name="chronicleTitle" required>
+
+  <label>Publication Date:</label>
+  <input type="date" name="publicationDate">
+
+  <label>Description:</label>
+  <textarea name="description"></textarea>
+
+  <label>Author Wizard:</label>
+  <select name="wizardID">
+    <option value="">Unknown</option>
+    <option value="1">1 - Reginald Stringly</option>
+    <option value="2">2 - Hurckle</option>
+    <option value="4">4 - The Dark Lord</option>
+  </select>
+
+  <button type="submit">Add Chronicle</button>
+</form>
+
+<h2>Update Chronicle </h2>
+<form class="cuForm" action="#" method="post">
+  <label>Chronicle:</label>
+  <select name="chronicleID" required>
+    <option value="" disabled selected>Select chronicle</option>
+    <option value="1">1 - Ancient Text I</option>
+    <option value="2">2 - Dark Arts Unveiled</option>
+    <option value="3">3 - Learning Wizardry</option>
+  </select>
+
+  <label>New Title:</label>
+  <input type="text" name="chronicleTitle">
+
+  <label>New Publication Date:</label>
+  <input type="date" name="publicationDate">
+
+  <label>New Description:</label>
+  <textarea name="description"></textarea>
+
+  <label>New Author:</label>
+  <select name="wizardID">
+    <option value="">Unknown</option>
+    <option value="1">Reginald Stringly</option>
+    <option value="2">Hurckle</option>
+    <option value="3">The Dark Lord</option>
+  </select>
+
+  <button type="submit">Update Chronicle</button>
+</form>
+
+<h2>Delete Chronicle </h2>
+<form class="cuForm" action="#" method="post">
+  <label>Chronicle:</label>
+  <select name="chronicleID" required>
+    <option value="" disabled selected>Select chronicle</option>
+    <option value="1">1 - Ancient Text I</option>
+    <option value="2">2 - Dark Arts Unveiled</option>
+    <option value="3">3 - Learning Wizardry</option>
+  </select>
+  <button type="submit">Delete Chronicle</button>
+</form>
+
+{% endblock %}
