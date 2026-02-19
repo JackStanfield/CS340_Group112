@@ -1,0 +1,118 @@
+{% extends "main.j2" %}
+{% block content %}
+
+<h1>Wizards</h1>
+
+<h2>Browse Wizards</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>wizardID</th>
+      <th>wizardName</th>
+      <th>beardLengthCm</th>
+      <th>wizardAge</th>
+      <th>masterID</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {# Static sample rows (replace or remove later when you wire DB SELECT) #}
+    <tr>
+      <td>1</td>
+      <td>Reginald Stringly</td>
+      <td>12</td>
+      <td>186</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Hurckle</td>
+      <td>15</td>
+      <td>85</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Dark Lord</td>
+      <td>0</td>
+      <td>20</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Add Wizard </h2>
+
+<form class="cuForm" action="#" method="post">
+  <label for="wizardName">Wizard Name:</label>
+  <input type="text" id="wizardName" name="wizardName" required>
+
+  <label for="beardLengthCm">Beard Length (cm):</label>
+  <input type="number" id="beardLengthCm" name="beardLengthCm" min="0">
+
+  <label for="wizardAge">Wizard Age:</label>
+  <input type="number" id="wizardAge" name="wizardAge" min="0">
+
+  <label for="masterID">Master :</label>
+  <select id="masterID" name="masterID">
+    <option value="">None</option>
+    <option value="1">1 - Reginald Stringly</option>
+    <option value="2">2 - Hurckle</option>
+    <option value="3">3 - The Dark Lord</option>
+  </select>
+
+  <button type="submit">Add Wizard</button>
+</form>
+
+
+<h2>Update Wizard </h2>
+
+<form class="cuForm" action="#" method="post">
+  <label for="updateWizardID">Wizard to Update:</label>
+  <select id="updateWizardID" name="wizardID" required>
+    <option value="" disabled selected>Select wizard</option>
+    <option value="1">1 - Reginald Stringly</option>
+    <option value="2">2 - Hurckle</option>
+    <option value="3">3 - The Dark Lord</option>
+  </select>
+
+  <label for="updateWizardName">New Wizard Name:</label>
+  <input type="text" id="updateWizardName" name="wizardName">
+
+  <label for="updateBeardLengthCm">New Beard Length (cm):</label>
+  <input type="number" id="updateBeardLengthCm" name="beardLengthCm" min="0">
+
+  <label for="updateWizardAge">New Wizard Age:</label>
+  <input type="number" id="updateWizardAge" name="wizardAge" min="0">
+
+  <label for="updateMasterID">New Master:</label>
+  <select id="updateMasterID" name="masterID">
+    <option value="">None</option>
+    <option value="1">1 - Reginald Stringly</option>
+    <option value="2">2 - Hurckle</option>
+    <option value="3">3 - The Dark Lord</option>
+  </select>
+
+  <button type="submit">Update Wizard</button>
+</form>
+
+
+{#
+ Delete dont know if necessary so commented out
+<h2>Delete Wizard (DELETE)</h2>
+
+<form class="cuForm" action="#" method="post">
+  <label for="deleteWizardID">Wizard to Delete:</label>
+  <select id="deleteWizardID" name="wizardID" required>
+    <option value="" disabled selected>Select wizard</option>
+    <option value="1">1 - Reginald Stringly</option>
+    <option value="2">2 - Hurckle</option>
+    <option value="5">5 - Gary Barton</option>
+  </select>
+
+  <button type="submit">Delete Wizard</button>
+</form>
+    #}
+{% endblock %}

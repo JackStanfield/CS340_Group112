@@ -1,0 +1,56 @@
+{% extends "main.j2" %}
+
+{% block content %}
+<h2>Spells</h2>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Spell ID</th>
+            <th>Spell Name</th>
+            <th>Casting Instructions</th>
+            <th>Chronicle Source</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Fireball</td>
+            <td>Focus intent, shout 'Ignis', and snap fingers.</td>
+            <td>Ancient Text 1</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Alohomora</td>
+            <td>Tap lock three times.</td>
+            <td>Learning Wizardry</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Add New Spell</h3>
+<form id="addSpell" action="/spells" method="POST">
+    <label for="spellName">Spell Name:</label>
+    <input type="text" id="spellName" name="spellName" required>
+    
+    <label for="instructions">Instructions:</label>
+    <textarea id="instructions" name="instructions"></textarea>
+    
+    <label for="chronicleID">Chronicle:</label>
+    <select name="chronicleID" id="chronicleID">
+        <option value="1">Ancient Text 1</option>
+        <option value="2">Learning Wizardry</option>
+    </select>
+    
+    <input type="submit" value="Add Spell">
+</form>
+{% endblock %}
