@@ -1,40 +1,29 @@
 {% extends "main.j2" %}
-
 {% block content %}
 <h2>Magic Categories</h2>
-
-<table border="1" cellpadding="5">
+<table>
     <thead>
         <tr>
-            <th>Category ID</th>
-            <th>Category Name</th>
+            <th>ID</th>
+            <th>Name</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Offensive</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Healing</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        </tr>
+        <tr><td>1</td><td>Transfiguration</td><td><button>Delete</button></td></tr>
     </tbody>
 </table>
 
 <h3>Add Category</h3>
-<form id="addCategory" action="/categories" method="POST">
-    <label for="categoryName">Category Name:</label>
-    <input type="text" id="categoryName" name="categoryName" required>
+<form action="/categories" method="POST">
+    <input type="text" name="categoryName" placeholder="Category Name" required>
     <input type="submit" value="Add Category">
+</form>
+
+<h3>Update Category</h3>
+<form action="/update-category" method="POST">
+    <select name="categoryID"><option value="1">Transfiguration</option></select>
+    <input type="text" name="categoryName" placeholder="New Name">
+    <input type="submit" value="Update Category">
 </form>
 {% endblock %}
