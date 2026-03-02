@@ -1,45 +1,58 @@
 {% extends "main.j2" %}
-
 {% block content %}
+
 <h2>Spell Categories (Intersection Table)</h2>
 <p>Manage which spells belong to which categories.</p>
 
-<table border="1" cellpadding="5">
+{% if spell_categories and spell_categories|length > 0 %}
+<table>
     <thead>
         <tr>
-            <th>Spell Name</th>
-            <th>Category Name</th>
-            <th>Actions</th>
+            <th>spellCategoryID</th>
+            <th>spellName</th>
+            <th>categoryName</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
+        {% for sc in spell_categories %}
         <tr>
-            <td>Fireball</td>
-            <td>Offensive</td>
-            <td><button>Delete Association</button></td>
+            <td>{{ sc.spellCategoryID }}</td>
+            <td>{{ sc.spellName }}</td>
+            <td>{{ sc.categoryName }}</td>
+
+            {# DELETE placeholder (not wired yet) #}
+            <form id="delete_spell_category_form">
+                <input type="hidden" name="delete_spellCategoryID" value="{{ sc.spellCategoryID }}">
+                <td><button type="submit">Delete Association</button></td>
+            </form>
         </tr>
-        <tr>
-            <td>Fireball</td>
-            <td>Elemental</td>
-            <td><button>Delete Association</button></td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>
+{% else %}
+<p>No spell-category associations found.</p>
+{% endif %}
 
 <h3>Link Spell to Category</h3>
-<form id="addSpellCat" action="/spell-categories" method="POST">
+<form class="cuForm" id="create_spell_category_form">
     <label for="spell_select">Spell:</label>
-    <select name="spell_id" id="spell_select">
-        <option value="1">Fireball</option>
-        <option value="2">Alohomora</option>
+    <select name="spellID" id="spell_select" required>
+        <option value="" disabled selected>Select spell</option>
+        {% for s in spells %}
+        <option value="{{ s.spellID }}">{{ s.spellID }} - {{ s.spellName }}</option>
+        {% endfor %}
     </select>
 
     <label for="category_select">Category:</label>
-    <select name="category_id" id="category_select">
-        <option value="1">Offensive</option>
-        <option value="2">Elemental</option>
+    <select name="categoryID" id="category_select" required>
+        <option value="" disabled selected>Select category</option>
+        {% for c in categories %}
+        <option value="{{ c.categoryID }}">{{ c.categoryID }} - {{ c.categoryName }}</option>
+        {% endfor %}
     </select>
 
     <input type="submit" value="Link Spell to Category">
 </form>
+
 {% endblock %}

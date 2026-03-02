@@ -5,47 +5,47 @@
 
 <h2>Browse Wizards</h2>
 
+{# Guard against empty result set so people[0] pattern doesn't crash #}
+{% if wizards and wizards|length > 0 %}
 <table>
   <thead>
     <tr>
-      <th>wizardID</th>
-      <th>wizardName</th>
-      <th>beardLengthCm</th>
-      <th>wizardAge</th>
-      <th>masterID</th>
+      {# auto header from keys (like the BSG example) #}
+      {% for key in wizards[0].keys() %}
+        <th>{{ key }}</th>
+      {% endfor %}
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
-    {# Static sample rows (replace or remove later when you wire DB SELECT) #}
+    {% for w in wizards %}
     <tr>
-      <td>1</td>
-      <td>Reginald Stringly</td>
-      <td>12</td>
-      <td>186</td>
-      <td></td>
+      <td>{{ w.wizardID }}</td>
+      <td>{{ w.wizardName }}</td>
+      <td>{{ w.beardLengthCm | default('', true) }}</td>
+      <td>{{ w.wizardAge | default('', true) }}</td>
+
+      {# Display master name if present; otherwise blank #}
+      <td>{{ w.masterName | default('', true) }}</td>
+
+      {# Optional placeholder delete button (not wired yet) #}
+      <form id="delete_wizard_form">
+        <input type="hidden" name="delete_wizard_id" value="{{ w.wizardID }}">
+        <td><button type="submit">Delete</button></td>
+      </form>
     </tr>
-    <tr>
-      <td>2</td>
-      <td>Hurckle</td>
-      <td>15</td>
-      <td>85</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>Dark Lord</td>
-      <td>0</td>
-      <td>20</td>
-      <td></td>
-    </tr>
+    {% endfor %}
   </tbody>
 </table>
+{% else %}
+  <p>No wizards found.</p>
+{% endif %}
 
 
-<h2>Add Wizard </h2>
+<h2>Add Wizard</h2>
 
-<form class="cuForm" action="#" method="post">
+<form class="cuForm" id="create_wizard_form">
   <label for="wizardName">Wizard Name:</label>
   <input type="text" id="wizardName" name="wizardName" required>
 
@@ -55,27 +55,27 @@
   <label for="wizardAge">Wizard Age:</label>
   <input type="number" id="wizardAge" name="wizardAge" min="0">
 
-  <label for="masterID">Master :</label>
+  <label for="masterID">Master:</label>
   <select id="masterID" name="masterID">
-    <option value="">None</option>
-    <option value="1">1 - Reginald Stringly</option>
-    <option value="2">2 - Hurckle</option>
-    <option value="3">3 - The Dark Lord</option>
+    <option value="NULL" selected>&lt; None &gt;</option>
+    {% for m in masters %}
+      <option value="{{ m.wizardID }}">{{ m.wizardID }} - {{ m.wizardName }}</option>
+    {% endfor %}
   </select>
 
   <button type="submit">Add Wizard</button>
 </form>
 
 
-<h2>Update Wizard </h2>
+<h2>Update Wizard</h2>
 
-<form class="cuForm" action="#" method="post">
+<form class="cuForm" id="update_wizard_form">
   <label for="updateWizardID">Wizard to Update:</label>
   <select id="updateWizardID" name="wizardID" required>
     <option value="" disabled selected>Select wizard</option>
-    <option value="1">1 - Reginald Stringly</option>
-    <option value="2">2 - Hurckle</option>
-    <option value="3">3 - The Dark Lord</option>
+    {% for w in wizards %}
+      <option value="{{ w.wizardID }}">{{ w.wizardID }} - {{ w.wizardName }}</option>
+    {% endfor %}
   </select>
 
   <label for="updateWizardName">New Wizard Name:</label>
@@ -89,30 +89,13 @@
 
   <label for="updateMasterID">New Master:</label>
   <select id="updateMasterID" name="masterID">
-    <option value="">None</option>
-    <option value="1">1 - Reginald Stringly</option>
-    <option value="2">2 - Hurckle</option>
-    <option value="3">3 - The Dark Lord</option>
+    <option value="NULL" selected>&lt; None &gt;</option>
+    {% for m in masters %}
+      <option value="{{ m.wizardID }}">{{ m.wizardID }} - {{ m.wizardName }}</option>
+    {% endfor %}
   </select>
 
   <button type="submit">Update Wizard</button>
 </form>
 
-
-{#
- Delete dont know if necessary so commented out
-<h2>Delete Wizard (DELETE)</h2>
-
-<form class="cuForm" action="#" method="post">
-  <label for="deleteWizardID">Wizard to Delete:</label>
-  <select id="deleteWizardID" name="wizardID" required>
-    <option value="" disabled selected>Select wizard</option>
-    <option value="1">1 - Reginald Stringly</option>
-    <option value="2">2 - Hurckle</option>
-    <option value="5">5 - Gary Barton</option>
-  </select>
-
-  <button type="submit">Delete Wizard</button>
-</form>
-    #}
 {% endblock %}

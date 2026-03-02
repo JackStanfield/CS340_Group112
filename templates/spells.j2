@@ -1,49 +1,84 @@
 {% extends "main.j2" %}
 {% block content %}
+
 <h2>Spells</h2>
+
+{% if spells and spells|length > 0 %}
 <table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Instructions</th>
-            <th>Chronicle</th>
-            <th>Actions</th>
+            <th>spellID</th>
+            <th>spellName</th>
+            <th>castingInstruction</th>
+            <th>chronicleTitle</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
+        {% for s in spells %}
         <tr>
-            <td>1</td>
-            <td>Fireball</td>
-            <td>Raise your hand toward the target...</td>
-            <td>Ancient Text I</td>
-            <td><button>Delete</button></td>
+            <td>{{ s.spellID }}</td>
+            <td>{{ s.spellName }}</td>
+            <td>{{ s.castingInstruction | default('', true) }}</td>
+            <td>{{ s.chronicleTitle | default('', true) }}</td>
+
+            {# DELETE placeholder (not wired yet) #}
+            <form id="delete_spell_form">
+                <input type="hidden" name="delete_spell_id" value="{{ s.spellID }}">
+                <td><button type="submit">Delete</button></td>
+            </form>
         </tr>
+        {% endfor %}
     </tbody>
 </table>
+{% else %}
+<p>No spells found.</p>
+{% endif %}
 
 <h3>Add New Spell</h3>
-<form action="/spells" method="POST">
-    <label>Name:</label><input type="text" name="spellName" required>
-    <label>Instructions:</label><textarea name="instructionInput"></textarea>
-    <label>Chronicle:</label>
-    <select name="chronicleID">
-        <option value="1">Ancient Text I</option>
+<form class="cuForm" id="create_spell_form">
+    <label for="create_spellName">Name:</label>
+    <input type="text" id="create_spellName" name="spellName" required>
+
+    <label for="create_castingInstruction">Instructions:</label>
+    <textarea id="create_castingInstruction" name="castingInstruction"></textarea>
+
+    <label for="create_chronicleID">Chronicle:</label>
+    <select id="create_chronicleID" name="chronicleID" required>
+        <option value="" disabled selected>Select chronicle</option>
+        {% for c in chronicles %}
+        <option value="{{ c.chronicleID }}">{{ c.chronicleID }} - {{ c.chronicleTitle }}</option>
+        {% endfor %}
     </select>
+
     <input type="submit" value="Add Spell">
 </form>
 
 <h3>Update Spell</h3>
-<form action="/update-spell" method="POST">
-    <label>Spell to Update:</label>
-    <select name="spellID">
-        <option value="1">Fireball</option>
+<form class="cuForm" id="update_spell_form">
+    <label for="update_spellID">Spell to Update:</label>
+    <select id="update_spellID" name="spellID" required>
+        <option value="" disabled selected>Select spell</option>
+        {% for s in spells %}
+        <option value="{{ s.spellID }}">{{ s.spellID }} - {{ s.spellName }}</option>
+        {% endfor %}
     </select>
-    <label>New Name:</label><input type="text" name="spellName">
-    <label>New Chronicle:</label>
-    <select name="chronicleID">
-        <option value="1">Ancient Text I</option>
+
+    <label for="update_spellName">New Name:</label>
+    <input type="text" id="update_spellName" name="spellName">
+
+    <label for="update_castingInstruction">New Instructions:</label>
+    <textarea id="update_castingInstruction" name="castingInstruction"></textarea>
+
+    <label for="update_chronicleID">New Chronicle:</label>
+    <select id="update_chronicleID" name="chronicleID">
+        <option value="" disabled selected>Select chronicle</option>
+        {% for c in chronicles %}
+        <option value="{{ c.chronicleID }}">{{ c.chronicleID }} - {{ c.chronicleTitle }}</option>
+        {% endfor %}
     </select>
+
     <input type="submit" value="Update Spell">
 </form>
+
 {% endblock %}

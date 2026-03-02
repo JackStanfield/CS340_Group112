@@ -1,29 +1,57 @@
 {% extends "main.j2" %}
 {% block content %}
+
 <h2>Magic Categories</h2>
+
+{% if categories and categories|length > 0 %}
 <table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Actions</th>
+            <th>categoryID</th>
+            <th>categoryName</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr><td>1</td><td>Transfiguration</td><td><button>Delete</button></td></tr>
+        {% for c in categories %}
+        <tr>
+            <td>{{ c.categoryID }}</td>
+            <td>{{ c.categoryName }}</td>
+
+            {# DELETE placeholder (not wired yet) #}
+            <form id="delete_category_form">
+                <input type="hidden" name="delete_category_id" value="{{ c.categoryID }}">
+                <td><button type="submit">Delete</button></td>
+            </form>
+        </tr>
+        {% endfor %}
     </tbody>
 </table>
+{% else %}
+<p>No categories found.</p>
+{% endif %}
 
 <h3>Add Category</h3>
-<form action="/categories" method="POST">
-    <input type="text" name="categoryName" placeholder="Category Name" required>
+<form class="cuForm" id="create_category_form">
+    <label for="create_categoryName">Category Name:</label>
+    <input type="text" id="create_categoryName" name="categoryName" required>
     <input type="submit" value="Add Category">
 </form>
 
 <h3>Update Category</h3>
-<form action="/update-category" method="POST">
-    <select name="categoryID"><option value="1">Transfiguration</option></select>
-    <input type="text" name="categoryName" placeholder="New Name">
+<form class="cuForm" id="update_category_form">
+    <label for="update_categoryID">Category to Update:</label>
+    <select id="update_categoryID" name="categoryID" required>
+        <option value="" disabled selected>Select category</option>
+        {% for c in categories %}
+        <option value="{{ c.categoryID }}">{{ c.categoryID }} - {{ c.categoryName }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="update_categoryName">New Name:</label>
+    <input type="text" id="update_categoryName" name="categoryName">
+
     <input type="submit" value="Update Category">
 </form>
+
 {% endblock %}
