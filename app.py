@@ -209,6 +209,33 @@ def spell_categories():
         if "dbConnection" in locals() and dbConnection:
             dbConnection.close()
 
+@app.route("/reset-db", methods=["GET"])
+def reset_db():
+    try:
+        dbConnection = db.connectDB()
+        query = "CALL ResetDatabase();"
+        db.query(dbConnection, query)
+        return redirect("/")
+    except Exception as e:
+        print(f"Error resetting database: {e}")
+        return "An error occurred while resetting the database.", 500
+    finally:
+        if "dbConnection" in locals() and dbConnection:
+            dbConnection.close()
+
+@app.route("/delete-demo", methods=["GET"])
+def delete_demo():
+    try:
+        dbConnection = db.connectDB()
+        query = "CALL DeleteDarkLord();"
+        db.query(dbConnection, query)
+        return redirect("/wizards")
+    except Exception as e:
+        print(f"Error executing CUD operation: {e}")
+        return "An error occurred while executing the PL/SQL.", 500
+    finally:
+        if "dbConnection" in locals() and dbConnection:
+            dbConnection.close()
 
 # ########################################
 # ########## LISTENER

@@ -1,5 +1,32 @@
 {% extends "main.j2" %}
+
 {% block content %}
-    <h1>Home</h1>
-    <p> Database UI for Wizards / Chronicles / Spells / Categories / SpellCategories.</p>
+<main>
+    <header>
+        <h1>Welcome to the Wizard Spell Encyclopedia</h1>
+        <p>A centralized database designed to document every known spell for historical preservation.</p>
+    </header>
+
+    <section style="margin-top: 30px; padding: 20px; border: 2px solid #333; border-radius: 8px; background-color: #f9f9f9;">
+        <h2>Admin Database Controls (Step 4 Draft)</h2>
+        <p>Use these controls to test the database stored procedures.</p>
+        
+        <div style="margin-top: 20px;">
+            <a href="/reset-db" style="text-decoration: none;">
+                <button style="padding: 12px 20px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-right: 15px;">
+                    RESET DATABASE (Call DDL)
+                </button>
+            </a>
+            
+            <a href="/delete-demo" style="text-decoration: none;">
+                <button style="padding: 12px 20px; background-color: #ff9800; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                    DEMO DELETE: Remove "The Dark Lord"
+                </button>
+            </a>
+        </div>
+        <p style="font-size: 0.9em; margin-top: 15px; color: #555;">
+            <em>Note: The Demo Delete button will redirect you to the Wizards page so you can verify the deletion. The Reset button will rebuild all tables and repopulate the dummy data.</em>
+        </p>
+    </section>
+</main>
 {% endblock %}
