@@ -7,27 +7,29 @@
 <table border="1" cellpadding="5">
     <thead>
         <tr>
-            <th>Spell Name</th>
-            <th>Category Name</th>
-            <th>Actions</th>
+            <th>spellCategoryID</th>
+            <th>spellName</th>
+            <th>categoryName</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Fireball</td>
-            <td>Offensive</td>
-            <td><button>Delete Association</button></td>
-        </tr>
-        <tr>
-            <td>Fireball</td>
-            <td>Elemental</td>
-            <td><button>Delete Association</button></td>
+            <td>{{ sc.spellCategoryID }}</td>
+            <td>{{ sc.spellName }}</td>
+            <td>{{ sc.categoryName }}</td>
+
+            {# DELETE placeholder (not wired yet) #}
+            <form id="delete_spell_category_form">
+                <input type="hidden" name="delete_spellCategoryID" value="{{ sc.spellCategoryID }}">
+                <td><button type="submit">Delete Association</button></td>
+            </form>
         </tr>
     </tbody>
 </table>
 
 <h3>Link Spell to Category</h3>
-<form id="addSpellCat" action="/spell-categories" method="POST">
+<form class="cuForm" id="create_spell_category_form">
     <label for="spell_select">Spell:</label>
     <select name="spell_id" id="spell_select">
         <option value="1">Fireball</option>
