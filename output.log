@@ -8,12 +8,18 @@ nohup: ignoring input
 [33mPress CTRL+C to quit[0m
  * Restarting with stat
  * Debugger is active!
- * Debugger PIN: 884-609-024
-10.197.155.21 - - [19/Feb/2026 13:36:00] "GET / HTTP/1.1" 200 -
-10.197.155.21 - - [19/Feb/2026 13:36:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-10.197.155.21 - - [19/Feb/2026 13:36:01] "GET / HTTP/1.1" 200 -
-10.197.155.21 - - [19/Feb/2026 13:36:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-10.197.155.21 - - [19/Feb/2026 13:36:02] "GET /wizards HTTP/1.1" 200 -
-10.197.155.21 - - [19/Feb/2026 13:36:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
-10.197.155.21 - - [19/Feb/2026 13:36:03] "GET / HTTP/1.1" 200 -
-10.197.155.21 - - [19/Feb/2026 13:36:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+ * Debugger PIN: 140-586-674
+10.197.153.33 - - [09/Mar/2026 12:50:47] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:50:49] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:50:49] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:50:50] "GET /spells HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:50:51] "GET /categories HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:50:52] "GET /spell-categories HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:50:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:51:03] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:51:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

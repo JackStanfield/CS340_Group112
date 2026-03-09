@@ -1,0 +1,1137 @@
+nohup: ignoring input
+ * Serving Flask app 'app'
+ * Debug mode: on
+Address already in use
+Port 1717 is in use by another program. Either identify and stop that program, or start the server with a different port.
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:1717
+ * Running on http://10.162.0.184:1717
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-581-041
+10.197.158.221 - - [01/Mar/2026 21:24:50] "GET / HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:24:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:24:51] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:24:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:24:53] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:24:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:24:55] "[35m[1mGET /spells HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/nfs/stak/users/stanfjoh/.local/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/nfs/stak/users/stanfjoh/CS340/CS340_Group112/app.py", line 117, in spells
+    cur = mysql.connection.cursor()
+NameError: name 'mysql' is not defined
+10.197.158.221 - - [01/Mar/2026 21:24:55] "GET /spells?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:24:55] "GET /spells?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:24:55] "GET /spells?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ * Detected change in '/nfs/stak/users/stanfjoh/CS340/CS340_Group112/app.py', reloading
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-581-041
+10.197.158.221 - - [01/Mar/2026 21:25:06] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:25:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:25:07] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:25:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:25:08] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:25:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:25:09] "GET /spell-categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:25:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:31] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:32] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:33] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:34] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:36] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:37] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:38] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:39] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:39] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:40] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:26:40] "GET /spell-categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:26:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:27:09] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:27:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:28:05] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:28:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:14] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:16] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:17] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:18] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:21] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:22] "GET /spell-categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:25] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:27] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:29] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:30] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:31] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:32] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:53] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:54] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:30:58] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:30:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:10] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:19] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:20] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:21] "GET /spell-categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:22] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:31:23] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:31:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:32:32] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:32:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:32:37] "GET /chronicles HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:32:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+ * Detected change in '/nfs/stak/users/stanfjoh/CS340/CS340_Group112/app.py', reloading
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                sc.spellCategoryID,
+                sc.spellID,
+                s.spellName,
+                sc.categoryID,
+                c.categoryName
+            FROM SpellCategories sc
+            JOIN Spells s
+                ON sc.spellID = s.spellID
+            JOIN Categories c
+                ON sc.categoryID = c.categoryID
+            ORDER BY sc.spellCategoryID;
+         with ()
+Executing 
+            SELECT spellID, spellName
+            FROM Spells
+            ORDER BY spellName;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryName;
+         with ()
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                sc.spellCategoryID,
+                sc.spellID,
+                s.spellName,
+                sc.categoryID,
+                c.categoryName
+            FROM SpellCategories sc
+            JOIN Spells s
+                ON sc.spellID = s.spellID
+            JOIN Categories c
+                ON sc.categoryID = c.categoryID
+            ORDER BY sc.spellCategoryID;
+         with ()
+Executing 
+            SELECT spellID, spellName
+            FROM Spells
+            ORDER BY spellName;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryName;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                sc.spellCategoryID,
+                sc.spellID,
+                s.spellName,
+                sc.categoryID,
+                c.categoryName
+            FROM SpellCategories sc
+            JOIN Spells s
+                ON sc.spellID = s.spellID
+            JOIN Categories c
+                ON sc.categoryID = c.categoryID
+            ORDER BY sc.spellCategoryID;
+         with ()
+Executing 
+            SELECT spellID, spellName
+            FROM Spells
+            ORDER BY spellName;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryName;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT
+                s.spellID,
+                s.spellName,
+                s.castingInstruction,
+                s.chronicleID,
+                c.chronicleTitle
+            FROM Spells s
+            JOIN Chronicles c
+                ON s.chronicleID = c.chronicleID
+            ORDER BY s.spellID;
+         with ()
+Executing 
+            SELECT chronicleID, chronicleTitle
+            FROM Chronicles
+            ORDER BY chronicleTitle;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryID;
+         with ()
+Executing 
+            SELECT
+                sc.spellCategoryID,
+                sc.spellID,
+                s.spellName,
+                sc.categoryID,
+                c.categoryName
+            FROM SpellCategories sc
+            JOIN Spells s
+                ON sc.spellID = s.spellID
+            JOIN Categories c
+                ON sc.categoryID = c.categoryID
+            ORDER BY sc.spellCategoryID;
+         with ()
+Executing 
+            SELECT spellID, spellName
+            FROM Spells
+            ORDER BY spellName;
+         with ()
+Executing 
+            SELECT categoryID, categoryName
+            FROM Categories
+            ORDER BY categoryName;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+Executing 
+            SELECT
+                c.chronicleID,
+                c.chronicleTitle,
+                c.description,
+                c.publicationDate,
+                c.wizardID,
+                w.wizardName
+            FROM Chronicles c
+            LEFT JOIN Wizards w
+                ON c.wizardID = w.wizardID
+            ORDER BY c.chronicleID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-581-041
+10.197.158.221 - - [01/Mar/2026 21:33:50] "[35m[1mGET /wizards?delete_wizard_id=1 HTTP/1.1[0m" 500 -
+10.197.158.221 - - [01/Mar/2026 21:33:55] "[35m[1mGET /wizards?delete_wizard_id=1 HTTP/1.1[0m" 500 -
+10.197.158.221 - - [01/Mar/2026 21:34:00] "[35m[1mGET /wizards HTTP/1.1[0m" 500 -
+10.197.158.221 - - [01/Mar/2026 21:34:00] "[35m[1mGET /wizards HTTP/1.1[0m" 500 -
+ * Detected change in '/nfs/stak/users/stanfjoh/CS340/CS340_Group112/app.py', reloading
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Error executing queries for /wizards: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM Wizards w\n            LEFT JOIN Wizards m\n                ON w.masterID ...' at line 7")
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Error executing queries for /wizards: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM Wizards w\n            LEFT JOIN Wizards m\n                ON w.masterID ...' at line 7")
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Error executing queries for /wizards: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM Wizards w\n            LEFT JOIN Wizards m\n                ON w.masterID ...' at line 7")
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Error executing queries for /wizards: (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM Wizards w\n            LEFT JOIN Wizards m\n                ON w.masterID ...' at line 7")
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-581-041
+10.197.158.221 - - [01/Mar/2026 21:34:05] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:34:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+ * Detected change in '/nfs/stak/users/stanfjoh/CS340/CS340_Group112/app.py', reloading
+Executing 
+            SELECT
+                w.wizardID,
+                w.wizardName,
+                w.beardLengthCm,
+                w.wizardAge,
+                w.masterID,
+                m.wizardName AS masterName
+            FROM Wizards w
+            LEFT JOIN Wizards m
+                ON w.masterID = m.wizardID
+            ORDER BY w.wizardID;
+         with ()
+Executing 
+            SELECT wizardID, wizardName
+            FROM Wizards
+            ORDER BY wizardName;
+         with ()
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 127-581-041
+10.197.158.221 - - [01/Mar/2026 21:34:51] "GET /wizards HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:34:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:35:14] "GET /spell-categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:35:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:35:21] "GET /categories HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:35:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.158.221 - - [01/Mar/2026 21:35:23] "GET /spells HTTP/1.1" 200 -
+10.197.158.221 - - [01/Mar/2026 21:35:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:1718
+ * Running on http://10.162.0.184:1718
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 816-754-041
+ * Detected change in '/nfs/stak/users/albrecau/CS340/CS340_Group112/app.py', reloading
+ * Restarting with stat
+  File "/nfs/stak/users/albrecau/CS340/CS340_Group112/app.py", line 245
+    app.run(port=port, host="0.0.0.0", debug=True)e
+                                                  ^
+SyntaxError: invalid syntax
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:1718
+ * Running on http://10.162.0.184:1718
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 880-574-023
+10.197.159.126 - - [02/Mar/2026 20:46:38] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:39] "GET /wizards HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:41] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:42] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.159.126 - - [02/Mar/2026 20:46:43] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:44] "GET /wizards HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:46] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:47] "[32mGET /delete-demo HTTP/1.1[0m" 302 -
+10.197.159.126 - - [02/Mar/2026 20:46:47] "GET /wizards HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:49] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:50] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.159.126 - - [02/Mar/2026 20:46:50] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:51] "GET /wizards HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:46:59] "GET /wizards HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:46:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.159.126 - - [02/Mar/2026 20:47:01] "GET / HTTP/1.1" 200 -
+10.197.159.126 - - [02/Mar/2026 20:47:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:32] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:32] "GET /static/style.css HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+10.197.144.229 - - [05/Mar/2026 07:13:46] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:49] "GET /chronicles HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:50] "GET /spells HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:51] "GET /categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:51] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:52] "GET /spell-categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:53] "GET /spell-categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:54] "GET /categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:54] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:13:55] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:13:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:02] "[32mGET /delete-demo HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:14:02] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:14] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:17] "GET /wizards?delete_wizard_id=2 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:17] "GET /wizards?delete_wizard_id=3 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:20] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:22] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:14:22] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:24] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:27] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:31] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:32] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:33] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:14:33] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:36] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:38] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:38] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:39] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:40] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:41] "[32mGET /delete-demo HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:14:41] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:45] "GET /wizards?delete_wizard_id=2 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:46] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:47] "GET /wizards?delete_wizard_id=2 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:47] "GET /wizards?delete_wizard_id=3 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:49] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:50] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:14:50] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:57] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:58] "GET /chronicles HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:14:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:14:59] "GET /spells HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:15:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:15:01] "GET /categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:15:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:15:04] "GET /spell-categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:15:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:15:06] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:15:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:15:07] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:15:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:22] "[32mGET /delete-demo HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:16:22] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:25] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:26] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:27] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:30] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:33] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:34] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:16:34] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:36] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.144.229 - - [05/Mar/2026 07:16:36] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:38] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:41] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:16:56] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:16:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:17:02] "GET /wizards?delete_wizard_id=4 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:17:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:17:11] "GET /chronicles HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:17:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:17:27] "GET /spells HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:17:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:17:38] "GET /categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:17:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:17:48] "GET /spell-categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:17:48] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:18:45] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:18:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:18:47] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:18:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:19:00] "GET /chronicles HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:19:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:19:01] "GET /spells HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:19:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:19:01] "GET /categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:19:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:19:02] "GET /spell-categories HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:19:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:19:04] "GET /spell-categories?delete_spellCategoryID=2 HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:19:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:20:20] "GET / HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:20:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.144.229 - - [05/Mar/2026 07:20:21] "GET /wizards HTTP/1.1" 200 -
+10.197.144.229 - - [05/Mar/2026 07:20:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:01:54] "GET / HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:01:54] "GET /static/style.css HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:01:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+10.197.147.147 - - [05/Mar/2026 20:03:06] "GET /wizards HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:03:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:03:20] "GET /chronicles HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:03:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:05:24] "GET /wizards HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:05:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:05:29] "GET /chronicles HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:05:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:05:33] "GET /spells HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:05:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:05:38] "GET /categories HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:05:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:08] "GET /spell-categories HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:15] "GET /spells HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:18] "GET /wizards HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:23] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:25] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:26] "GET /wizards?delete_wizard_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:28] "GET /wizards?delete_wizard_id=3 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:06:30] "GET /wizards?delete_wizard_id=2 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:06:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:37] "GET /chronicles HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:40] "GET /chronicles?delete_chronicle_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:42] "GET /chronicles?delete_chronicle_id=2 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:44] "GET /spells HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:46] "GET /spells?delete_spell_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:50] "GET /categories HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:52] "GET /categories?delete_category_id=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:53] "GET /categories?delete_category_id=2 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:55] "GET /spell-categories HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:56] "GET /spell-categories?delete_spellCategoryID=1 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:56] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:58] "GET /spell-categories?delete_spellCategoryID=2 HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:07:59] "GET /categories HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:07:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:01] "GET /spells HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:02] "GET /wizards HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:04] "GET / HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:09] "[32mGET /delete-demo HTTP/1.1[0m" 302 -
+10.197.147.147 - - [05/Mar/2026 20:08:09] "GET /wizards HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:14] "GET / HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.147.147 - - [05/Mar/2026 20:08:16] "[32mGET /reset-db HTTP/1.1[0m" 302 -
+10.197.147.147 - - [05/Mar/2026 20:08:16] "GET / HTTP/1.1" 200 -
+10.197.147.147 - - [05/Mar/2026 20:08:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:12] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+10.197.153.33 - - [09/Mar/2026 12:02:26] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:26] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:02:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:03:28] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:03:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:03:29] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:03:29] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:03:30] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:03:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:04:34] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:04:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:04:36] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:04:36] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:04:36] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:04:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:05:59] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:05:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:06:00] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:06:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:06:44] "GET / HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:06:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:06:46] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:06:46] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:06:47] "GET /chronicles HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:06:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:07:06] "GET /spell-categories HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:07:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:07:43] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:07:43] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:07:44] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:07:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+10.197.153.33 - - [09/Mar/2026 12:09:00] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:09:00] "GET /static/style.css HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:09:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+10.197.153.33 - - [09/Mar/2026 12:09:01] "GET /wizards HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:09:01] "GET /static/style.css HTTP/1.1" 200 -
+10.197.153.33 - - [09/Mar/2026 12:09:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
