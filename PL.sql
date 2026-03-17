@@ -1,11 +1,20 @@
+-- Citations:
+-- Originality: Adapted from CS340 starter code.
+-- Scope: All stored procedures used for CUD and Reset operations.
+
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
 
 DROP PROCEDURE IF EXISTS ResetDatabase;
-DROP PROCEDURE IF EXISTS DeleteDarkLord;
+DROP PROCEDURE IF EXISTS AddSpell;
+DROP PROCEDURE IF EXISTS DeleteSpell;
+DROP PROCEDURE IF EXISTS AddSpellCategory;
+DROP PROCEDURE IF EXISTS UpdateSpellCategory;
+DROP PROCEDURE IF EXISTS DeleteSpellCategory;
 
 DELIMITER //
 
+-- 1. RESET DB PROCEDURE
 CREATE PROCEDURE ResetDatabase()
 BEGIN
     DROP TABLE IF EXISTS SpellCategories;
@@ -61,9 +70,35 @@ BEGIN
     INSERT INTO SpellCategories (spellID, categoryID) VALUES (1,4), (2,2);
 END //
 
-CREATE PROCEDURE DeleteDarkLord()
+-- 2. CREATE PROCEDURES
+CREATE PROCEDURE AddSpell(IN p_spellName VARCHAR(255), IN p_castingInstruction TEXT, IN p_chronicleID INT)
 BEGIN
-    DELETE FROM Wizards WHERE wizardName = 'The Dark Lord';
+    INSERT INTO Spells (spellName, castingInstruction, chronicleID) 
+    VALUES (p_spellName, p_castingInstruction, p_chronicleID);
+END //
+
+CREATE PROCEDURE AddSpellCategory(IN p_spellID INT, IN p_categoryID INT)
+BEGIN
+    INSERT INTO SpellCategories (spellID, categoryID) VALUES (p_spellID, p_categoryID);
+END //
+
+-- 3. UPDATE PROCEDURE (M:N)
+CREATE PROCEDURE UpdateSpellCategory(IN p_spellCategoryID INT, IN p_spellID INT, IN p_categoryID INT)
+BEGIN
+    UPDATE SpellCategories 
+    SET spellID = p_spellID, categoryID = p_categoryID 
+    WHERE spellCategoryID = p_spellCategoryID;
+END //
+
+-- 4. DELETE PROCEDURES
+CREATE PROCEDURE DeleteSpell(IN p_spellID INT)
+BEGIN
+    DELETE FROM Spells WHERE spellID = p_spellID;
+END //
+
+CREATE PROCEDURE DeleteSpellCategory(IN p_spellID INT, IN p_categoryID INT)
+BEGIN
+    DELETE FROM SpellCategories WHERE spellID = p_spellID AND categoryID = p_categoryID;
 END //
 
 DELIMITER ;

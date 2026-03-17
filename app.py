@@ -1,14 +1,12 @@
-# ########################################
-# ########## SETUP
+# Citation for this file:
+# Originality: Adapted from CS340 Flask Starter App.
+# Scope: Flask server routes and database execution.
 
 from flask import Flask, render_template, request, redirect
 import os
 import database.db_connector as db
 
 app = Flask(__name__)
-
-# ########################################
-# ########## ROUTE HANDLERS
 
 @app.route("/", methods=["GET"])
 def home():
@@ -18,28 +16,23 @@ def home():
         print(f"Error rendering page: {e}")
         return "An error occurred while rendering the page.", 500
 
-
 @app.route("/wizards", methods=["GET"])
 def wizards():
     try:
         dbConnection = db.connectDB()
-
         query1 = """
             SELECT w.wizardID, w.wizardName, w.beardLengthCm, w.wizardAge, m.wizardName AS masterName
             FROM Wizards w LEFT JOIN Wizards m ON w.masterID = m.wizardID ORDER BY w.wizardID;
         """
         query2 = "SELECT wizardID, wizardName FROM Wizards ORDER BY wizardName;"
-
         wizards = db.query(dbConnection, query1).fetchall()
         masters = db.query(dbConnection, query2).fetchall()
-
         return render_template("wizards.j2", wizards=wizards, masters=masters)
     except Exception as e:
         print(f"Error executing queries for /wizards: {e}")
         return "An error occurred.", 500
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()
-
 
 @app.route("/chronicles", methods=["GET"])
 def chronicles():
@@ -50,17 +43,14 @@ def chronicles():
             FROM Chronicles c LEFT JOIN Wizards w ON c.wizardID = w.wizardID ORDER BY c.chronicleID;
         """
         query2 = "SELECT wizardID, wizardName FROM Wizards ORDER BY wizardName;"
-
         chronicles = db.query(dbConnection, query1).fetchall()
         wizards = db.query(dbConnection, query2).fetchall()
-
         return render_template("chronicles.j2", chronicles=chronicles, wizards=wizards)
     except Exception as e:
         print(f"Error executing queries for /chronicles: {e}")
         return "An error occurred.", 500
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()
-
 
 @app.route("/spells", methods=["GET", "POST"])
 def spells():
@@ -71,7 +61,8 @@ def spells():
             castingInstruction = request.form.get("castingInstruction")
             chronicleID = request.form.get("chronicleID")
 
-            query = "INSERT INTO Spells (spellName, castingInstruction, chronicleID) VALUES (%s, %s, %s)"
+            # Executing Stored Procedure for CREATE
+            query = "CALL AddSpell(%s, %s, %s)"
             db.query(dbConnection, query, (spellName, castingInstruction, chronicleID))
             return redirect("/spells")
 
@@ -80,10 +71,8 @@ def spells():
             FROM Spells s JOIN Chronicles c ON s.chronicleID = c.chronicleID ORDER BY s.spellID;
         """
         query2 = "SELECT chronicleID, chronicleTitle FROM Chronicles ORDER BY chronicleTitle;"
-
         spells = db.query(dbConnection, query1).fetchall()
         chronicles = db.query(dbConnection, query2).fetchall()
-
         return render_template("spells.j2", spells=spells, chronicles=chronicles)
     except Exception as e:
         print(f"Error executing queries for /spells: {e}")
@@ -95,7 +84,8 @@ def spells():
 def delete_spell(spellID):
     dbConnection = db.connectDB()
     try:
-        query = "DELETE FROM Spells WHERE spellID = %s"
+        # Executing Stored Procedure for DELETE
+        query = "CALL DeleteSpell(%s)"
         db.query(dbConnection, query, (spellID,))
         return redirect("/spells")
     except Exception as e:
@@ -103,7 +93,6 @@ def delete_spell(spellID):
         return "An error occurred.", 500
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()
-
 
 @app.route("/categories", methods=["GET"])
 def categories():
@@ -118,7 +107,6 @@ def categories():
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()
 
-
 @app.route("/spell-categories", methods=["GET", "POST"])
 def spell_categories():
     dbConnection = db.connectDB()
@@ -127,7 +115,8 @@ def spell_categories():
             spellID = request.form.get("spellID")
             categoryID = request.form.get("categoryID")
             
-            query = "INSERT INTO SpellCategories (spellID, categoryID) VALUES (%s, %s)"
+            # Executing Stored Procedure for CREATE M:N
+            query = "CALL AddSpellCategory(%s, %s)"
             db.query(dbConnection, query, (spellID, categoryID))
             return redirect("/spell-categories")
 
@@ -151,11 +140,30 @@ def spell_categories():
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()
 
+@app.route("/update-spell-category", methods=["POST"])
+def update_spell_category():
+    dbConnection = db.connectDB()
+    try:
+        spellCategoryID = request.form.get("spellCategoryID")
+        spellID = request.form.get("spellID")
+        categoryID = request.form.get("categoryID")
+        
+        # Executing Stored Procedure for UPDATE M:N
+        query = "CALL UpdateSpellCategory(%s, %s, %s)"
+        db.query(dbConnection, query, (spellCategoryID, spellID, categoryID))
+        return redirect("/spell-categories")
+    except Exception as e:
+        print(f"Error executing Update M:N: {e}")
+        return "An error occurred.", 500
+    finally:
+        if "dbConnection" in locals() and dbConnection: dbConnection.close()
+
 @app.route("/delete-spell-category/<int:spellID>/<int:categoryID>", methods=["POST"])
 def delete_spell_category(spellID, categoryID):
     dbConnection = db.connectDB()
     try:
-        query = "DELETE FROM SpellCategories WHERE spellID = %s AND categoryID = %s"
+        # Executing Stored Procedure for DELETE M:N
+        query = "CALL DeleteSpellCategory(%s, %s)"
         db.query(dbConnection, query, (spellID, categoryID))
         return redirect("/spell-categories")
     except Exception as e:
@@ -173,19 +181,6 @@ def reset_db():
         return redirect("/")
     except Exception as e:
         print(f"Error resetting database: {e}")
-        return "An error occurred.", 500
-    finally:
-        if "dbConnection" in locals() and dbConnection: dbConnection.close()
-
-@app.route("/delete-demo", methods=["GET"])
-def delete_demo():
-    try:
-        dbConnection = db.connectDB()
-        query = "CALL DeleteDarkLord();"
-        db.query(dbConnection, query)
-        return redirect("/wizards")
-    except Exception as e:
-        print(f"Error executing CUD operation: {e}")
         return "An error occurred.", 500
     finally:
         if "dbConnection" in locals() and dbConnection: dbConnection.close()

@@ -46,4 +46,35 @@
     </select>
     <input type="submit" value="Link Spell to Category">
 </form>
+
+<hr>
+
+<h3>Update a Spell-Category Relationship (Update)</h3>
+<form class="cuForm" id="update_spell_category_form" action="/update-spell-category" method="POST">
+    <label for="update_rel_select">Select Relationship to Update:</label>
+    <select name="spellCategoryID" id="update_rel_select" required>
+        <option value="" disabled selected>Select an existing link</option>
+        {% for rel in spell_categories %}
+            <option value="{{ rel.spellCategoryID }}">{{ rel.spellName }} - {{ rel.categoryName }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="update_spell_select">New Spell:</label>
+    <select name="spellID" id="update_spell_select" required>
+        <option value="" disabled selected>Select new spell</option>
+        {% for spell in spells %}
+            <option value="{{ spell.spellID }}">{{ spell.spellName }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="update_category_select">New Category:</label>
+    <select name="categoryID" id="update_category_select" required>
+        <option value="" disabled selected>Select new category</option>
+        {% for cat in categories %}
+            <option value="{{ cat.categoryID }}">{{ cat.categoryName }}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Update Relationship">
+</form>
 {% endblock %}
